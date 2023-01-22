@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import ListFilm from "./components/ListFilm.js";
+import ListFilm from "../components/ListFilm";
 import { Input, Empty } from "antd";
 
-function App() {
-  const [film, setFilm] = useState([]);
+function Home() {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -12,12 +11,6 @@ function App() {
 
   const apiUrl = "https://omdbapi.com/";
   const apiKey = "fc331929";
-
-  useEffect(() => {
-    axios
-      .get("https://omdbapi.com/?t=Star%20Wars&apikey=" + apiKey)
-      .then((res) => setFilm(res.data));
-  }, []);
 
   function onSearch() {
     setLoading(true);
@@ -67,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

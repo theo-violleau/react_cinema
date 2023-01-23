@@ -8,27 +8,27 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "films/:imdbId",
-    element: <FilmPage />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
+	{
+		path: "/",
+		element: <Home />,
+	},
+	{
+		path: "films/:imdbId",
+		element: <FilmPage />,
+	},
+	{
+		path: "login",
+		element: <Login />,
+	},
+	{
+		path: "register",
+		element: <Register />,
+	},
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router} />
+	</React.StrictMode>
 );

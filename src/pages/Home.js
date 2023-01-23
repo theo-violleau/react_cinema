@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import ListFilm from "../components/ListFilm";
 import { Input, Empty } from "antd";
+import NavBar from "../components/NavBar";
 
 function Home() {
   const [films, setFilms] = useState([]);
@@ -41,6 +42,7 @@ function Home() {
 
   return (
     <div>
+      <NavBar />
       <div style={{ justifyContent: "center", display: "flex" }}>
         <Input.Search
           placeholder="Cherchez un film"

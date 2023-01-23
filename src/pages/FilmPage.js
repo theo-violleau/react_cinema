@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Image, Statistic, Col, Row } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const FilmPage = () => {
   const [film, setFilm] = useState([]);
@@ -23,18 +24,9 @@ const FilmPage = () => {
 
   return (
     <div>
-      <div>
-        <Row>
-          <Col span={12}>
-            <LeftOutlined
-              onClick={() => navigate("/"   )}
-              style={{ marginTop: 50, marginLeft: 50, fontSize: 40 }}
-            />
-          </Col>
-          <Col span={12}>
-            <p style={{ marginLeft: -105, fontSize: 40 }}>{film.Title}</p>
-          </Col>
-        </Row>
+      <NavBar />
+      <div style={{ justifyContent: "center", display: "flex" }}>
+        <p style={{ fontSize: 40 }}>{film.Title}</p>
       </div>
       <Row
         style={{
@@ -85,10 +77,14 @@ const FilmPage = () => {
           <Statistic
             style={{ marginLeft: -100, marginTop: 20 }}
             title="Genre(s)"
-            value={film.Runtime}
+            value={film.Genre}
           />
         </Col>
       </Row>
+      <LeftOutlined
+        onClick={() => navigate("/")}
+        style={{ marginTop: 60, marginLeft: 70, fontSize: 40 }}
+      />
     </div>
   );
 };

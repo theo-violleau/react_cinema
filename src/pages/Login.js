@@ -2,7 +2,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import AuthDetails from "../components/AuthDetails";
 
-function App() {
+function Login() {
 	return (
 		<div className="Login">
 			<SignIn />

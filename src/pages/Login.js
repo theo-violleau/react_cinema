@@ -1,12 +1,14 @@
-import React from "react";
-import Login1 from "../components/Login1";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
+import AuthDetails from "../components/AuthDetails";
 
-const Login = () => {
+function App() {
 	return (
-		<div>
-			<Login1 />
+		<div className="Login">
+			<SignIn />
+			<SignUp />
+			<AuthDetails />
 		</div>
 	);
-};
-
+}
 export default Login;

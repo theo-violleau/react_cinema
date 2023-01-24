@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ListFilm from "../components/ListFilm";
 import { Input, Empty } from "antd";
@@ -12,6 +12,10 @@ function Home() {
 
   const apiUrl = "https://omdbapi.com/";
   const apiKey = "fc331929";
+
+  useEffect(() => {
+    document.title = "Accueil";
+  }, []);
 
   function onSearch() {
     setLoading(true);

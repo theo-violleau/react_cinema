@@ -1,14 +1,9 @@
 import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
-import AuthDetails from "../components/AuthDetails";
-
 function Login() {
-	return (
-		<div className="Login">
-			<SignIn />
-			<SignUp />
-			<AuthDetails />
-		</div>
-	);
+  return (
+    <div>
+      <SignIn />
+    </div>
+  );
 }
 export default Login;

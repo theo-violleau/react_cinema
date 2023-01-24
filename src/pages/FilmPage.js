@@ -18,8 +18,13 @@ const FilmPage = () => {
   useEffect(() => {
     axios.get(apiUrl + "?i=" + imdbId + "&apikey=" + apiKey).then((res) => {
       setFilm(res.data);
+
       setImDB(res.data.Ratings[0].Value);
     });
+  }, [imdbId]);
+
+  useEffect(() => {
+    document.title = "Film";
   }, []);
 
   return (

@@ -11,7 +11,12 @@ const NavBar = () => {
     <Layout>
       <Header>
         <Row justify="space-between" style={{ color: "white" }}>
-          <Col style={{ marginLeft: 640, fontSize: 25 }}>React Cinema</Col>
+          <Col
+            onClick={() => navigate("/")}
+            style={{ marginLeft: 640, fontSize: 25 }}
+          >
+            React Cinema
+          </Col>
           <Col>
             <UserOutlined
               style={{ fontSize: 25 }}

@@ -1,42 +1,113 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../config/firebase";
+import { Button, Form, Input, message } from "antd";
+import { useNavigate } from "react-router-dom";
+import { HomeOutlined } from "@ant-design/icons";
 
 const SignUp = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
-	const signUp = (e) => {
-		e.preventDefault();
-		createUserWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				console.log(userCredential);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+  function signUp() {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        message.success("Vous êtes bien inscrit");
+      })
+      .catch(() => {
+        message.error("Erreur dans la saisie");
+      });
+  }
 
-	return (
-		<div className="sign-in-container">
-			<form onSubmit={signUp}>
-				<h1>Create Account</h1>
-				<input
-					type="email"
-					placeholder="Enter your email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				></input>
-				<input
-					type="password"
-					placeholder="Enter your password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				></input>
-				<button type="submit">Sign Up</button>
-			</form>
-		</div>
-	);
+  return (
+    <div>
+      <div>
+        <HomeOutlined
+          style={{ marginTop: 50, marginLeft: 80, fontSize: 30 }}
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+      </div>
+      <div
+        style={{
+          justifyContent: "center",
+          display: "flex",
+          fontSize: 40,
+          marginTop: 20,
+          marginBottom: 70,
+        }}
+      >
+        Inscription
+      </div>
+      <div style={{ justifyContent: "center", display: "flex" }}>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          style={{
+            width: 500,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={signUp}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="Adresse email"
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: "Entrez votre adresse email",
+              },
+            ]}
+          >
+            <Input onChange={(e) => setEmail(e.target.value)} />
+          </Form.Item>
+
+          <Form.Item
+            label="Mot de passe"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Entrez votre mot de passe",
+              },
+            ]}
+          >
+            <Input.Password onChange={(e) => setPassword(e.target.value)} />
+          </Form.Item>
+
+          <Form.Item
+            wrapperCol={{
+              offset: 8,
+              span: 16,
+            }}
+          >
+            <Button type="primary" htmlType="submit">
+              S'inscrire
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+      <div style={{ justifyContent: "center", display: "flex" }}>
+        <Button
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Connectez-vous
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 export default SignUp;
